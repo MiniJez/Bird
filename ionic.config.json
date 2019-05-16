@@ -1,6 +1,8 @@
 {
   "name": "Bird",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular",
   "id": "abb2c5a3"
 }

@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Playlist</ion-title>
+    <ion-item lines="none" slot="end" *ngIf="displayVideo" (click)="unShowVideo()" style="cursor:pointer;">
+      <ion-icon name="arrow-back"></ion-icon>
+      <ion-label>back</ion-label>
+    </ion-item>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div *ngIf="!displayVideo">
+    <ion-list *ngFor="let doc of docs" style="padding: 0px;">
+      <ion-item-sliding>
+          <ion-item-options side="end">
+            <ion-item-option (click)="delete(doc)" color="danger">Delete</ion-item-option>
+          </ion-item-options>
+          <ion-item (click)="showVideo(doc)" style="cursor:pointer;">
+            <ion-label>{{ doc.songName }}</ion-label>
+          </ion-item>
+        </ion-item-sliding>
+    </ion-list>
+  </div>
+  <div *ngIf="displayVideo" padding>
+    <h6 padding-horizontal>{{ doc.songName }}</h6>
+    <ion-item padding-vertical lines="none">
+        <iframe width="100%" height="100%" [src]="doc.songLink"></iframe>
+    </ion-item>
+    <ion-item lines="none">
+        <iframe width="100%" height="100%" [src]="doc.tutoLink"></iframe>
+    </ion-item>
+    <ion-item>
+      <ion-button (click)="showTab()" expand="block">Show tab</ion-button>
+    </ion-item>
+  </div>
+  <!--<iframe width="100%" height="100%" [src]="trustUrl(doc.tutoLink)"></iframe>-->
+</ion-content>
